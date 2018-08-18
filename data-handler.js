@@ -6,22 +6,22 @@ const handleCompanyData = (companies, command, query) => {
     switch (command) {
         case 'locate':
             result = locateCompanies(companies, query);
-            return `\nCompany Names:\n${result.names.join(', ')}\n\nNumber of Companies: ${result.count}`;
+            return `Company Names:\n${result.names.join(', ')}\n\nNumber of Companies: ${result.count}`;
             break;
         case 'find_before':
             result = findBeforeYear(companies, query);
-            return `\nCompany Names:\n${result.names.join(', ')}\n\nNumber of Companies: ${result.count}`;
+            return `Company Names:\n${result.names.join(', ')}\n\nNumber of Companies: ${result.count}`;
             break;
         case 'find_after':
             result = findAfterYear(companies, query);
-            return `\nCompany Names:\n${result.names.join(', ')}\n\nNumber of Companies: ${result.count}`;
+            return `Company Names:\n${result.names.join(', ')}\n\nNumber of Companies: ${result.count}`;
             break;
         case 'find_companies_between_size':
             result = findCompaniesBetweenSize(companies, query);
             if (!result) {
                 return `\nYou entered an invalid range! The following ranges are valid:\n'1-10', '11-50', '51-200', '201-500', '501-1,000', '1,001-5,000', '5,001-10,000', '10,001+'`;
             } else {
-                return `\nCompany Names:\n${result.names.join(', ')}\n\nNumber of Companies: ${result.count}`;
+                return `Company Names:\n${result.names.join(', ')}\n\nNumber of Companies: ${result.count}`;
             }
             break;
         case 'find_type':
@@ -48,7 +48,7 @@ const handleCompanyData = (companies, command, query) => {
                 'Scientific Research',
                 'Transportation'`;
             } else {
-                return `\nCompany Names:\n${result.names.join(', ')}\n\nNumber of Companies: ${result.count}`;
+                return `Company Names:\n${result.names.join(', ')}\n\nNumber of Companies: ${result.count}`;
             }
             break;
         default:

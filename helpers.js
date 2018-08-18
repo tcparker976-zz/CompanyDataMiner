@@ -24,18 +24,9 @@ const findAfterYear = (companies, year) => companies.reduce((acc, company) => {
 }, { names: [], count: 0 });
 
 const findCompaniesBetweenSize = (companies, size) => {
-    const VALID_OPTIONS = {
-        '1-10': true, 
-        '11-50': true, 
-        '51-200': true, 
-        '201-500': true, 
-        '501-1,000': true, 
-        '1,001-5,000': true, 
-        '5,001-10,000': true, 
-        '10,001+': true
-    };
+    const VALID_OPTIONS = new Set(['1-10', '11-50', '51-200', '201-500', '501-1,000', '1,001-5,000', '5,001-10,000', '10,001+']) 
 
-    if (VALID_OPTIONS[size]) {
+    if (VALID_OPTIONS.has(size)) {
         return companies.reduce((acc, company) => {
             if (company.full_time_employees === size) {
                 acc.names.push(company.company_name);
@@ -46,32 +37,31 @@ const findCompaniesBetweenSize = (companies, size) => {
     } else {
         return false;
     }
-}
+};
 
 const findCompanyType = (companies, type) => {
-    const VALID_TYPES = {
-        'N/A': true,
-        'Aerospace and Defense': true,
-        'Business & Legal Services': true,
-        'Data/Technology': true,
-        'Education': true,
-        'Energy': true,
-        'Environment & Weather': true,
-        'Finance & Investment': true,
-        'Food & Agriculture': true,
-        'Geospatial/Mapping': true,
-        'Governance': true,
-        'Healthcare': true,
-        'Housing/Real Estate': true,
-        'Insurance': true,
-        'Lifestyle & Consumer': true,
-        'Media': true,
-        'Research & Consulting': true,
-        'Scientific Research': true,
-        'Transportation': true
-    };
-
-    if (VALID_TYPES[type]) {
+    const VALID_TYPES = new Set(
+        ['N/A',
+         'Aerospace and Defense',
+         'Business & Legal Services',
+         'Data/Technology',
+         'Education',
+         'Energy',
+         'Environment & Weather',
+         'Finance & Investment',
+         'Food & Agriculture',
+         'Geospatial/Mapping',
+         'Governance',
+         'Healthcare',
+         'Housing/Real Estate',
+         'Insurance',
+         'Lifestyle & Consumer',
+         'Media',
+         'Research & Consulting',
+         'Scientific Research',
+         'Transportation']);
+  
+    if (VALID_TYPES.has(type)) {
         return companies.reduce((acc, company) => {
             if (company.company_category === type) {
                 acc.names.push(company.company_name);
@@ -82,9 +72,7 @@ const findCompanyType = (companies, type) => {
     } else {
         return false;
     }
-}
-
-
+};
 
 
 module.exports = {
@@ -93,4 +81,4 @@ module.exports = {
     findAfterYear,
     findCompaniesBetweenSize,
     findCompanyType
-}
+};

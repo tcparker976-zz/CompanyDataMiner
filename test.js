@@ -15,7 +15,7 @@ describe('handleCompanyData', function() {
 
     it('should filter out empty field values from the result', function() {
         sampleData[0].state = '';
-        expect(handleCompanyData(sampleData, 'locate', 'DC')).to.be.equal(`\nCompany Names:\n\n\nNumber of Companies: 0`);
+        expect(handleCompanyData(sampleData, 'locate', 'DC')).to.be.equal(`Company Names:\n\n\nNumber of Companies: 0`);
     });
 });
 
