@@ -16,7 +16,7 @@ if (fs.existsSync(filePath)) { // if the file path exists locally
         const companies = JSON.parse(data.toString('utf8'));
         console.log(handleCompanyData(companies, command, query));
     });
-} else if (fileName.includes('http')) { // assumes the file path was a URL and attempts to fetch
+} else if (fileName.includes('http')) { // checks if the file path was a URL and attempts to fetch
     fetch(fileName)
         .then(response => response.json())
         .then(companies => {
@@ -24,5 +24,5 @@ if (fs.existsSync(filePath)) { // if the file path exists locally
         })
         .catch(err => console.error(err));
 } else {
-    console.log('Invalid file path. Please enter a local JSON file name or a URL to a JSON file.');
+    console.log('Invalid file path. Please enter a local JSON file name or a URL to a JSON file');
 }

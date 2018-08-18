@@ -2,26 +2,28 @@
 
 ## Design Overview
 
-This is a program that ingests a user submitted JSON file containing data on companies and allows the user to run queries against the JSON data from the terminal command line. It returns the number of companies and the names of the companies that matched the query, or an error if the user inputs were invalid. The program will check if the JSON data to query is stored locally in the same directory - if it isn't it will check if the user entered a URL and attempt to fetch it. 
+This is a program that ingests a user submitted JSON file containing data on companies and allows the user to run queries against the JSON data from the terminal command line. It prints to console the number of companies and the names of the companies that match a given query, or an error if the users inputs were invalid. The program will check if the JSON data to query is stored locally in the same directory - if it isn't it will check if the user entered a URL and attempt to fetch it. 
+
+A side note - I decided to use the fetch-node module to implement the fetch functionality instead of the http module that comes with Node. I think it looks better stylistically and makes for a more elegant solution.
 
 ## Install Instructions
 
 Unzip the files into your root directory. Open the directory on your code editor.
 
 Navigate to the same directory in the terminal.
-If you are starting in your root folder type the following:
+If you are starting in your root folder type the following, replacing 'your_directory_name' with whatever you named your directory:
 
 ```
 cd your_directory_name/
 ```
 
-Install dependencies with the command below:
+Install dependencies with the command:
 
 ```
 npm install
 ```
 
-This program is run with a bash script as defined in 'my_program'. If execute permissions were lost on 'my_program', you will need to add them back with the following:
+This program is run with a bash script as defined in 'my_program'. If you are having trouble running the program because execute permissions were lost, you will need to add them back with the following:
 
 ```
 chmod u+x ./my_program
@@ -38,7 +40,9 @@ To run the program, you must type the following into your terminal while you are
 ### Parameters
 
 **[file]** - The path to the JSON company data to query. This can be either a local file in the directory or a URL to JSON data.
+
 **[argument]** - The value to check against the companies in the JSON data.
+
 **[command]** - These are the currently supported commands:
 * `locate`.  This instruction will allow us to find the list of companies by Location (state only).
 		`e.g. : locate CA`
@@ -82,8 +86,8 @@ To run the program, you must type the following into your terminal while you are
 ## Assumptions
 
 * This solution assumes the JSON data to query is not particularly large.
-* This solutions accounts for whether the user enters valid or invalid inputs. I did not think it was safe to leave invalid inputs unhandled.
-* There is an assumption that the user is either fetching data from an outside URL to query against or is checking against a JSON file they have locally in the same directory.
+* I assumed the user could enter invalid inputs, so this solution accounts for that.
+* It was unclear to me as to whether the user would only check local JSON files or fetch them, so there is an assumption that the user is either fetching data from an outside URL to query against or is checking against a JSON file they have locally in the same directory.
 
 ## Testing
 
@@ -98,5 +102,5 @@ npm test
 * For a large amount of data, the current solution may be very slow.
 * Matches are stored in memory, and that would become an issue if there are millions of matches.
 * In the case of large JSON data sets, space complexity would improve if a matched company name was simply logged to console and not stored. 
-* Large data sets could be processed in batches, across a number of server instances. 
-* In terms of big O notation, an unordered data set would at best be O(n) time complexity. 
+* Large data sets could be processed in batches, across a number of server instances, and their results could merged. 
+* In terms of big O notation, an unordered data set would at best be O(n) time complexity - this solution will traverse the entire array no matter what command is entered. 
