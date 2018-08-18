@@ -91,7 +91,7 @@ To run the program, you must type the following into your terminal while you are
 
 ## Testing
 
- Invalid data types are handled and will log to the user if there is an error. Mocha and Chai were used for testing. The currect tests check the functionality of the helpers and the primary data handler. To run the tests, type the following in the terminal while in this directory.
+ Invalid data types are handled and will log to the user if there is an error. Mocha and Chai were used for unit testing. The current tests check the functionality of the helpers and the primary data handler. To run the tests, type the following in the terminal while in this directory.
 
 ```
 npm test
@@ -101,6 +101,6 @@ npm test
 
 * For a large amount of data, the current solution may be very slow.
 * Matches are stored in memory, and that would become an issue if there are millions of matches.
-* In the case of large JSON data sets, space complexity would improve if a matched company name was simply logged to console and not stored. 
+* In the case of large JSON data sets, space complexity would improve if a matched company name was simply logged to console in real time and not stored. 
 * Large data sets could be processed in batches, across a number of server instances, and their results could merged. 
 * In terms of big O notation, an unordered data set would at best be O(n) time complexity - this solution will traverse the entire array no matter what command is entered. 
