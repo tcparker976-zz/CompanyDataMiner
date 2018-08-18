@@ -1,0 +1,10 @@
+#!/bin/bash
+
+file="$1"
+command="$2"
+query="$3"
+
+node index.js $file $command $query
+
+
+
