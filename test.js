@@ -7,7 +7,7 @@ const sampleData = require('./sample-data.js');
 describe('handleCompanyData', function() {
     it('should tell the user if the JSON data is not an array of companies', function() {
         expect(handleCompanyData({}, 'locate', 'MD')).to.be.equal('The JSON data is not an array of companies');
-    })
+    });
 
     it('should tell the user if the command is invalid', function() {
         expect(handleCompanyData(sampleData, 'fake', 'MD')).to.be.equal('"fake" is not a valid command');
@@ -16,7 +16,7 @@ describe('handleCompanyData', function() {
     it('should filter out empty field values from the result', function() {
         sampleData[0].state = '';
         expect(handleCompanyData(sampleData, 'locate', 'DC')).to.be.equal(`\nCompany Names:\n\n\nNumber of Companies: 0`);
-    })
+    });
 });
 
 describe('locateCompanies', function() {
@@ -44,7 +44,7 @@ describe('findCompaniesBetweenSize', function() {
 
     it('should return false if the size range is invalid', function() {
         expect(findCompaniesBetweenSize(sampleData, '34232')).to.be.false;
-    })
+    });
 });
 
 describe('findCompanyType', function() {
@@ -54,5 +54,5 @@ describe('findCompanyType', function() {
 
     it('should return false if the company type is invalid', function() {
         expect(findCompanyType(sampleData, 'faker')).to.be.false;
-    })
+    });
 });

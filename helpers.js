@@ -33,7 +33,7 @@ const findCompaniesBetweenSize = (companies, size) => {
         '1,001-5,000': true, 
         '5,001-10,000': true, 
         '10,001+': true
-    }
+    };
 
     if (VALID_OPTIONS[size]) {
         return companies.reduce((acc, company) => {
@@ -69,7 +69,7 @@ const findCompanyType = (companies, type) => {
         'Research & Consulting': true,
         'Scientific Research': true,
         'Transportation': true
-    }
+    };
 
     if (VALID_TYPES[type]) {
         return companies.reduce((acc, company) => {
